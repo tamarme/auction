@@ -28,7 +28,7 @@ class UserController {
     initializeRoutes() {
         this.router.post(`${this.path}/register`, (0, validation_middleware_1.default)(user_validation_1.default.register), this.register.bind(this));
         this.router.post(`${this.path}/login`, (0, validation_middleware_1.default)(user_validation_1.default.login), this.login.bind(this));
-        this.router.post(`${this.path}`, authenticated_middleware_1.authenticated, this.getUser.bind(this));
+        this.router.get(`${this.path}`, authenticated_middleware_1.authenticated, this.getUser.bind(this));
     }
     register(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {

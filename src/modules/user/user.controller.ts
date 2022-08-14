@@ -28,7 +28,7 @@ class UserController implements Controller {
       this.login.bind(this)
     );
 
-    this.router.post(`${this.path}`, authenticated, this.getUser.bind(this));
+    this.router.get(`${this.path}`, authenticated, this.getUser.bind(this));
   }
 
   private async register(req: Request, res: Response, next: NextFunction) {
