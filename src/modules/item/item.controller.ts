@@ -1,5 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import Controller from '../../utils/interfaces/Controller.interface';
+import Controller from '../../utils/interfaces/controller.interface';
 import HttpException from '../../utils/exceptions/http.exception';
 import validationMiddleware from '../../utils/middlewares/validation.middleware';
 import validate from './item.validation';
@@ -30,7 +30,7 @@ class ItemController implements Controller {
     try {
       const { title, description } = req.body;
       const item = await this.itemService.create(title, description);
-      res.status(401).json({ item });
+      res.status(201).json({ item });
     } catch (error: any) {
       next(new HttpException(400, error.message));
     }

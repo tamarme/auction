@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 require("dotenv/config");
 const item_controller_1 = __importDefault(require("./modules/item/item.controller"));
+const user_controller_1 = __importDefault(require("./modules/user/user.controller"));
 const app_1 = __importDefault(require("./app"));
-const app = new app_1.default([new item_controller_1.default()], Number(process.env.PORT));
+const app = new app_1.default([new item_controller_1.default(), new user_controller_1.default()], Number(process.env.PORT));
 app.listen();

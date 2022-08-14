@@ -1,7 +1,7 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 import { connect } from './utils/database';
-import Controller from './utils/interfaces/Controller.interface';
+import Controller from './utils/interfaces/controller.interface';
 import errorMiddleware from './utils/middlewares/error.middleware';
 
 class App {

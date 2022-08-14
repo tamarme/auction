@@ -32,7 +32,7 @@ class ItemController {
             try {
                 const { title, description } = req.body;
                 const item = yield this.itemService.create(title, description);
-                res.status(401).json({ item });
+                res.status(201).json({ item });
             }
             catch (error) {
                 next(new http_exception_1.default(400, error.message));
