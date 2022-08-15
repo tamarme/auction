@@ -15,6 +15,28 @@ class ItemController implements Controller {
   }
 
   private initializeRoutes() {
+    /**
+     * @openapi
+     * /:
+     *   get:
+     *     description: Welcome to swagger-jsdoc!
+     *     responses:
+     *       200:
+     *         description: Returns a mysterious string.
+     */
+    this.router.get('/', (req: Request, res: Response) => {
+      res.send('Hello');
+    });
+
+    /**
+     * @openapi
+     * /:
+     *   post:
+     *     description: Welcome to swagger-jsdoc!
+     *     responses:
+     *       200:
+     *         description: Returns a mysterious string.
+     */
     this.router.post(
       `${this.path}`,
       validationMiddleware(validate.create),

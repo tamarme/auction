@@ -3,6 +3,21 @@ import cors from 'cors';
 import { connect } from './utils/database';
 import Controller from './utils/interfaces/controller.interface';
 import errorMiddleware from './utils/middlewares/error.middleware';
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUI from 'swagger-ui-express';
+
+const options = {
+  definition: {
+    openapi: '3.0.3',
+    info: {
+      title: 'Auction API',
+      version: '1.0.0',
+    },
+  },
+  apis: ['**/*.ts'],
+};
+
+const specs = swaggerJSDoc(options);
 
 class App {
   public express: Application;
@@ -22,6 +37,7 @@ class App {
     this.express.use(cors());
     this.express.use(express.json());
     this.express.use(express.urlencoded({ extended: true }));
+    this.express.use('/docs', swaggerUI.serve, swaggerUI.setup(specs));
   }
 
   private initializeController(controllers: Controller[]) {
